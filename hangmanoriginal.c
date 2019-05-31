@@ -14,7 +14,7 @@ int avaible(int len, int j, char word[50], char ch[50])
   int i= 0, win = 0, k = 0, repeat = 0, rep;
   rep = 1;
 
-  for(i; i < len; i++)
+  for(i = 0; i <= len; i++)
   {
     repeat = 0;
     for(k = 0; k <= j; k++)
@@ -23,14 +23,10 @@ int avaible(int len, int j, char word[50], char ch[50])
       {
         repeat++;
       }
-      if(repeat > rep)
-      {
-        rep = repeat;
-      }
     }
   }
 
-  if(rep == 1)
+  if(repeat == 1)
     return 1;
   else
     return 2;
@@ -42,6 +38,7 @@ int main()
   int i = 0, len, j = 0, chance = 7, true, win = 0, choose = 0, pos = 0, end = 0, k = 0, counter = 0;
   char ch[50]; // this variable is the character the user will enter to check if it's avaible in word or not
   char pch[50]; /* this variable is for the character chosen right*/
+  char wrong[50]; // this char will store the false entered characters.
 
   /*this for loop is to assign the asterix to the variable pch*/
   for(i = 0; i < 50; i++)
@@ -97,39 +94,26 @@ int main()
 
       if(avaible(len, j, word, ch) == 1)
         win++; // this line will increase win by 1 when win reaches the lenghts of word[] the loop will break
-      else
-        if(avaible(len, j, word, ch) == 2)
-          printf("\nyou have already enteredd that value\n");
+
     }
     else // if the character is not avaible in word[] :
     {
-      choose++; /*this will determine what picture to choose from hanged[]
+      for(i = 0; i <= j; i++)
+      {
+        wrong[i] = ch[i];
+      }
+      if(avaible(j, j, wrong, ch) == 1)
+        {
+          printf("\nyou have already enteredd that value\n");
+          choose++; /*this will determine what picture to choose from hanged[]
                   (everytime the user ipout a character not avaible in word it will increase by one)*/
-      chance--; //chance will be decreased by one
+          chance--; //chance will be decreased by one
+        }
     }
     printf("\n\nyou still have %d chance\n", chance); //this will determine how many chances the user still have
     j++; //this will increase j  by one, j is used to determine where we are inputting the character in ch[]
 
     printf("%s", hanged[choose]); //this will print the picture of the hanged man
-    if(win == len)
-    {
-      break;
-    }
-
-    for(i = 0; i < len; i++)
-    {
-      counter = 0;
-      for(k = 0; k <= j; k++)
-      {
-        if(ch[k] == word[i])
-          {
-            counter++;
-            if(counter >= 2)
-              printf("\nyou have already entered this value\n");
-          }
-      }
-    }
-
 
     end = 0;
     for(i = 0; i <= j; i++)
@@ -139,7 +123,6 @@ int main()
     }
     if(end == len)
       break;
-
   }while(chance > 0);
 
   if(end == len)
