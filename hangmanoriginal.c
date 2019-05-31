@@ -214,8 +214,6 @@ int main()
             printf("%c", pch[i]); //this line will print the components of pch[],(including * and the characters chosen)
           }
 
-          printf("\nyou have already enteredd that value\n");
-
           choose++; /*this will determine what picture to choose from hanged[]
 
                   (everytime the user ipout a character not avaible in word it will increase by one)*/
@@ -225,6 +223,9 @@ int main()
         }
       else
       {
+
+        printf("\nyou have already entered that character!!\n");
+
         for(i = 0; i < len; i++)
         {
           printf("%c", pch[i]); //this line will print the components of pch[],(including * and the characters chosen)
