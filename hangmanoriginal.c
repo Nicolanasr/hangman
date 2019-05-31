@@ -186,9 +186,15 @@ int main()
 
 
 
-      if(avaible(len, j, word, ch) == 1)
+      if(avaible(j, j, word, ch) != 1)
 
-        win++; // this line will increase win by 1 when win reaches the lenghts of word[] the loop will break
+      {
+
+        printf("\nyou have already entered this value\n");
+
+      }
+
+
 
 
 
@@ -261,6 +267,7 @@ int main()
 
       break;
 
+
   }while(chance > 0);
 
 
@@ -273,4 +280,9 @@ int main()
 
     printf("\nyou lost!!\n");
 
+
+  getch();
+
+
+  return 0;
 }
