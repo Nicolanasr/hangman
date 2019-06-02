@@ -16,7 +16,9 @@ char *hanged[] = {"  ______\n |      |\n        |\n        |\n        |\n       
 
 void draw(int choose, char *hanged[50])
 {
+
 	printf("%s", hanged[choose]); //this will print the picture of the hanged man
+
 }
 
 
@@ -54,8 +56,6 @@ int avaible(int len, int j, char word[50], char ch[50])
 
 	}
 
-
-
 	if(repeat == 1)
 
 		return 1;
@@ -74,7 +74,7 @@ int main()
 
 	char word[50];
 
-	int i = 0, len, j = 0, chance = 7, true, choose = 0, pos = 0, end = 0;
+	int i = 0, len, j = 0, chance = 7, true, choose = 0, pos = 0, end = 0, counter = 0;
 
 	char ch[50]; // this variable is the character the user will enter to check if it's avaible in word or not
 
@@ -123,13 +123,11 @@ int main()
 
 	{
 
-
-
-		printf("\n\nenter your character: ");
+		printf("\nenter your character: ");
 
 		scanf("%s", &ch[j]); // it'll get thge first character from the user
 
-		system("cls");
+
 
 		for(i = 0; i < len; i++)
 
@@ -188,33 +186,20 @@ int main()
 			}
 
 
-
-			if(avaible(j, j, word, ch) != 1)
-
-			{
-
-				printf("\nyou have already entered this value\n");
-
-				for(i = 0; i < len; i++)
-
-				{
-
-					printf("%c", pch[i]); //this line will print the components of pch[],(including * and the characters chosen)
-
-				}
-
-			}
-
-
 		}
 
 		else // if the character is not avaible in word[] :
 
 		{
-			for(i = 0; i <= j; i++)
+			for(counter; counter <= j; counter++)
+
 	   	{
-			  wrong[i] = ch[i];
-  		}
+
+			  wrong[counter] = ch[counter]; //if the character is not in word[], assign that character to wrong[].
+
+			}
+
+
 
 			if(avaible(j, j, wrong, ch) == 1) //if the character is not repeted.
 
@@ -242,10 +227,6 @@ int main()
 
 				printf("\nyou have already entered that character!!\n");
 
-				for(i = 0; i < len; i++)
-				{
-					printf("%c", pch[i]); //this line will print the components of pch[],(including * and the characters chosen)
-				}
 			}
 
 
@@ -256,9 +237,7 @@ int main()
 		j++; //this will increase j  by one, j is used to determine where we are inputting the character in ch[]
 
 
-
-		draw(choose, hanged);
-
+   draw(choose, hanged);
 
 
 		end = 0;
@@ -278,6 +257,21 @@ int main()
 			break;
 
 
+		printf("press any key to continue ...");
+
+		getch();
+
+		system("cls");
+
+    printf("\n");
+
+		for(i = 0; i < len; i++)
+
+		{
+
+			printf("%c", pch[i]); //this line will print the components of pch[],(including * and the characters chosen)
+
+		}
 
 
 	}while(chance > 0);
@@ -297,8 +291,6 @@ int main()
 			printf("the word was: \"%s\"", word);
 
 		}
-
-
 
 
 
